@@ -2,17 +2,20 @@
 
 @section('content')
     <section class="content-header">
-        <h1>
-            Project
+        <h1 class="pull-left">News</h1>
+        <h1 class="pull-right">
+           <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('news.create', ['id' => request('id', $default = null)]) !!}">Add New</a>
         </h1>
     </section>
     <div class="content">
+        <div class="clearfix"></div>
+
+        @include('flash::message')
+
+        <div class="clearfix"></div>
         <div class="box box-primary">
             <div class="box-body">
-                <div class="row" style="padding-left: 20px">
-                    @include('projects.show_fields')
-                    <a href="{!! route('projects.index') !!}" class="btn btn-default">Back</a>
-                </div>
+                    @include('news.table')
             </div>
         </div>
     </div>
@@ -45,3 +48,4 @@
         <hr style="margin: 5px 0 5px 0 "/>
     @endforeach
 @endsection
+

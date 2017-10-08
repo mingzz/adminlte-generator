@@ -14,7 +14,7 @@
             <td>{!! $project->description !!}</td>
             <td>{!! $project->website !!}</td>
             <td>{!! $project->people !!}</td>
-            <td>{!! $project->detail !!}</td>
+            <td width="500px" height="100px" style="overflow: scroll; display: block">{!! $project->detail !!}</td>
             <td>
                 {!! Form::open(['route' => ['projects.destroy', $project->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>

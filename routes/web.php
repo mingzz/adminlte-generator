@@ -22,3 +22,5 @@ Route::get('/admin', 'HomeController@index');
 Route::resource('projects', 'projectController');
 
 Route::resource('publications', 'publicationController');
+
+Route::resource('news', 'newsController');

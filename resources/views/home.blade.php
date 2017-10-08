@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>InfyOm Laravel Generator</title>
+    <title>Project Exhibition</title>
 
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -33,7 +33,7 @@
             {{--</button>--}}
             <a class="navbar-brand" href="http://web.eecs.umich.edu/~mozafari/">Barzan Mozafari</a>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav mr-auto">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Current Project
@@ -59,6 +59,7 @@
                         </div>
                     </li>
                 </ul>
+                <a href="{{ url('/login') }}"><button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Login</button></a>
             </div>
         </nav>
     </div>
@@ -79,7 +80,15 @@
             {{--</span>--}}
             {!! $project->detail !!}
         </p>
-        <h3>Publications:</h3>
+        @foreach($news as $new)
+            @if($new->project_id == $project->id)
+                <div>
+                    <h4 style="color: red">News: {!! $new->title !!}</h4>
+                    <p> {!! $new->content !!}</p>
+                </div>
+            @endif
+        @endforeach
+        <h4>Publications:</h4>
         <ul>
             @foreach($publications as $publication)
                 @if($publication->project_id == $project->id)

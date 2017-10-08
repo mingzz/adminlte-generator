@@ -6,8 +6,8 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="http://infyom.com/images/logo/blue_logo_150x150.jpg" class="img-circle"
-                     alt="User Image"/>
+                <img src="http://www.theshare.cn/upload/image/20160127/6358952644482285948199979.jpg" class="img-circle"
+                     style="width: 45px; height: 45px" alt="User Image"/>
             </div>
             <div class="pull-left info">
                 @if (Auth::guest())
