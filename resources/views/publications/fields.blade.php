@@ -28,6 +28,12 @@
     {!! Form::text('article_url', null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- Project ID Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('project_id', 'Project ID:') !!}
+    {!! Form::text('project_id', request('id', $default = null), ['class' => 'form-control']) !!}
+</div>
+
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}

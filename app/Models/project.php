@@ -24,8 +24,9 @@ class project extends Model
         'title',
         'description',
         'website',
-        'detail',
-        'people'
+        'people',
+        'status',
+        'detail'
     ];
 
     /**
@@ -37,8 +38,9 @@ class project extends Model
         'title' => 'string',
         'description' => 'string',
         'website' => 'string',
-        'detail' => 'string',
-        'people' => 'string'
+        'people' => 'string',
+        'status' => 'string',
+        'detail' => 'string'
     ];
 
     /**
@@ -50,8 +52,9 @@ class project extends Model
         'title' => 'required',
         'description' => 'required',
         'website' => 'nullable|url',
-        'detail' => 'required',
-        'people' => 'required'
+        'people' => 'required',
+        'status' => 'required',
+        'detail' => 'required'
     ];
 
     

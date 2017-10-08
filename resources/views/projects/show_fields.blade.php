@@ -28,12 +28,17 @@
     <p>{!! $project->people !!}</p>
 </div>
 
+<!-- Status Field -->
+<div class="form-group">
+    {!! Form::label('status', 'Status:') !!}
+    <p>{!! $project->status !!}</p>
+</div>
+
 <!-- Detail Field -->
 <div class="form-group">
     {!! Form::label('detail', 'Detail:') !!}
     <p>{!! $project->detail !!}</p>
 </div>
-
 
 <!-- Created At Field -->
 <div class="form-group">

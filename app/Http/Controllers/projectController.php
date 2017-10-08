@@ -82,8 +82,11 @@ class projectController extends AppBaseController
 
             return redirect(route('projects.index'));
         }
+        $projects = $this->projectRepository->all();
 
-        return view('projects.show')->with('project', $project);
+        return view('projects.show')
+            ->with('projects', $projects)
+            ->with('project', $project);
     }
 
     /**
@@ -102,8 +105,11 @@ class projectController extends AppBaseController
 
             return redirect(route('projects.index'));
         }
+        $projects = $this->projectRepository->all();
 
-        return view('projects.edit')->with('project', $project);
+        return view('projects.edit')
+            ->with('projects', $projects)
+            ->with('project', $project);
     }
 
     /**

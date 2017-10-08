@@ -18,8 +18,9 @@ class CreateprojectsTable extends Migration
             $table->string('title');
             $table->string('description');
             $table->string('website');
-            $table->text('detail');
             $table->string('people');
+            $table->string('status');
+            $table->text('detail');
             $table->timestamps();
             $table->softDeletes();
         });

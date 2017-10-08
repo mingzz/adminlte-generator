@@ -9,7 +9,9 @@
         <th colspan="3">Action</th>
     </thead>
     <tbody>
+    @php ($value = request('id', $default = null))
     @foreach($publications as $publication)
+        @if($publication->project_id == $value)
         <tr>
             <td>{!! $publication->title !!}</td>
             <td>{!! $publication->author !!}</td>
@@ -27,6 +29,7 @@
                 {!! Form::close() !!}
             </td>
         </tr>
+        @endif
     @endforeach
     </tbody>
 </table>

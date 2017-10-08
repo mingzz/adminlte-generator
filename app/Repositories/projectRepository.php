@@ -14,8 +14,9 @@ class projectRepository extends BaseRepository
         'title',
         'description',
         'website',
-        'detail',
-        'people'
+        'people',
+        'status',
+        'detail'
     ];
 
     /**

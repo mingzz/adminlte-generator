@@ -22,6 +22,12 @@
     {!! Form::text('people', null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- Status Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('status', 'Status:') !!}
+    {!! Form::select('status',array('C' => 'Current', 'P' => 'Past'), 'C', ['class' => 'form-control']) !!}
+</div>
+
 <!-- Detail Field -->
 <div class="form-group col-sm-12 col-lg-12">
     {!! Form::label('detail', 'Detail:') !!}
