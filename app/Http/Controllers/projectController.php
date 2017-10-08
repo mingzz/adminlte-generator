@@ -43,7 +43,9 @@ class projectController extends AppBaseController
      */
     public function create()
     {
-        return view('projects.create');
+        $projects = $this->projectRepository->all();
+        return view('projects.create')
+            ->with('projects', $projects);
     }
 
     /**

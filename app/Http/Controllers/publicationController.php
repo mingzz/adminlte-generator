@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreatepublicationRequest;
 use App\Http\Requests\UpdatepublicationRequest;
 use App\Repositories\publicationRepository;
+use App\Repositories\projectRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
@@ -16,9 +17,13 @@ class publicationController extends AppBaseController
     /** @var  publicationRepository */
     private $publicationRepository;
 
-    public function __construct(publicationRepository $publicationRepo)
+    /** @var  projectRepository */
+    private $projectRepository;
+
+    public function __construct(publicationRepository $publicationRepo, projectRepository $projectRepo)
     {
         $this->publicationRepository = $publicationRepo;
+        $this->projectRepository = $projectRepo;
     }
 
     /**
@@ -32,8 +37,13 @@ class publicationController extends AppBaseController
         $this->publicationRepository->pushCriteria(new RequestCriteria($request));
         $publications = $this->publicationRepository->all();
 
+        $this->projectRepository->pushCriteria(new RequestCriteria($request));
+        $projects = $this->projectRepository->all();
+
         return view('publications.index')
-            ->with('publications', $publications);
+            ->with('publications', $publications)
+            ->with('projects', $projects);
+
     }
 
     /**
@@ -43,7 +53,8 @@ class publicationController extends AppBaseController
      */
     public function create()
     {
-        return view('publications.create');
+        $projects = $this->projectRepository->all();
+        return view('publications.create')->with('projects', $projects);
     }
 
     /**
@@ -80,8 +91,11 @@ class publicationController extends AppBaseController
 
             return redirect(route('publications.index'));
         }
+        $projects = $this->projectRepository->all();
 
-        return view('publications.show')->with('publication', $publication);
+        return view('publications.show')
+            ->with('publication', $publication)
+            ->with('projects', $projects);
     }
 
     /**
@@ -100,8 +114,11 @@ class publicationController extends AppBaseController
 
             return redirect(route('publications.index'));
         }
+        $projects = $this->projectRepository->all();
 
-        return view('publications.edit')->with('publication', $publication);
+        return view('publications.edit')
+            ->with('publication', $publication)
+            ->with('projects', $projects);
     }
 
     /**

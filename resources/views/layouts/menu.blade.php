@@ -1,8 +1,5 @@
-<li class="{{ Request::is('projects*') ? 'active' : '' }}">
-    <a href="{!! route('projects.index') !!}"><i class="fa fa-edit"></i><span>projects</span></a>
+<li class="">
+    <a href="{!! route('projects.create') !!}"><i class="fa fa-edit"></i><span>Add New Projects</span></a>
 </li>
 
-<li class="{{ Request::is('publications*') ? 'active' : '' }}">
-    <a href="{!! route('publications.index') !!}"><i class="fa fa-edit"></i><span>publications</span></a>
-</li>
-
+@yield('bar')
