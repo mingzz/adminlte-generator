@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateprojectRequest;
 use App\Http\Requests\UpdateprojectRequest;
 use App\Repositories\projectRepository;
+use zgldh\QiniuStorage\QiniuStorage;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
@@ -57,11 +58,25 @@ class projectController extends AppBaseController
      */
     public function store(CreateprojectRequest $request)
     {
-        $input = $request->all();
+//        $input = $request->all();
+        $input =  $request->except('image');
 
         $project = $this->projectRepository->create($input);
 
-        Flash::success('Project saved successfully.');
+        if ($request->hasFile('image')){
+            $image = $request->file('image');
+            $disk = QiniuStorage::disk('qiniu');
+            $fileName = md5($image->getClientOriginalName().time().rand()).'.'.$image->getClientOriginalExtension();
+            $bool = $disk->put('umich-project/image_'.$fileName,file_get_contents($image->getRealPath()));
+            if ($bool) {
+                $path = $disk->downloadUrl('umich-project/image_'.$fileName);;
+                Flash::success('Project and Image saved successfully.');
+            }else{
+                Flash::success('Project saved successfully.Image failed to uploaded.');
+            }
+        }else{
+            Flash::success('Project saved successfully.');
+        }
 
         return redirect(route('projects.index'));
     }

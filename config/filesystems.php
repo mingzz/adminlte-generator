@@ -63,6 +63,18 @@ return [
             'bucket' => env('AWS_BUCKET'),
         ],
 
+        'qiniu' => [
+            'driver'  => 'qiniu',
+            'domains' => [
+                'default'   => 'oxhw5dmbh.bkt.clouddn.com',
+                'https'     => '',
+                'custom'    => '',
+            ],
+            'access_key'=> 'ZwhAUJUBsvDrBHFj_TjXzHAbv05kjlzmELkPux7w',  //AccessKey
+            'secret_key'=> 'VMvLdkFWQgWj15XpDpEQQUShzx2TGOOLAdioAfGN',  //SecretKey
+            'bucket'    => 'umich-project',
+            'notify_url'=> '',
+        ],
     ],
 
 ];
