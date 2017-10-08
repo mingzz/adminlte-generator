@@ -58,10 +58,8 @@ class projectController extends AppBaseController
      */
     public function store(CreateprojectRequest $request)
     {
-//        $input = $request->all();
         $input =  $request->except('image');
-
-        $project = $this->projectRepository->create($input);
+        $input['image_url'] = null;
 
         if ($request->hasFile('image')){
             $image = $request->file('image');
@@ -69,12 +67,16 @@ class projectController extends AppBaseController
             $fileName = md5($image->getClientOriginalName().time().rand()).'.'.$image->getClientOriginalExtension();
             $bool = $disk->put('umich-project/image_'.$fileName,file_get_contents($image->getRealPath()));
             if ($bool) {
-                $path = $disk->downloadUrl('umich-project/image_'.$fileName);;
+                $path = $disk->downloadUrl('umich-project/image_'.$fileName);
+                $input['image_url'] = $path;
+                $project = $this->projectRepository->create($input);
                 Flash::success('Project and Image saved successfully.');
             }else{
+                $project = $this->projectRepository->create($input);
                 Flash::success('Project saved successfully.Image failed to uploaded.');
             }
         }else{
+            $project = $this->projectRepository->create($input);
             Flash::success('Project saved successfully.');
         }
 

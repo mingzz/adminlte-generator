@@ -26,6 +26,7 @@ class project extends Model
         'website',
         'people',
         'status',
+        'image_url',
         'detail'
     ];
 
@@ -40,6 +41,7 @@ class project extends Model
         'website' => 'string',
         'people' => 'string',
         'status' => 'string',
+        'image_url' => 'string',
         'detail' => 'string'
     ];
 

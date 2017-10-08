@@ -28,10 +28,10 @@
     {!! Form::select('status',array('C' => 'Current', 'P' => 'Past'), 'C', ['class' => 'form-control']) !!}
 </div>
 
-{{--<div class="form-group col-sm-6">--}}
-    {{--{!! Form::label('image', 'Image:') !!}--}}
+<div class="form-group col-sm-6">
+    <label>Image: </label>
     {!! Form::file('image', ['class' => 'form-control']) !!}
-{{--</div>--}}
+</div>
 
 <!-- Detail Field -->
 <div class="form-group col-sm-12 col-lg-12">

@@ -71,14 +71,26 @@
             <p>Website: <a href="{!! $project->website !!}">{!! $project->website !!}</a></p>
         @endif
         <p>People: {!! $project->people !!}</p>
-        <p>{!! $project->detail !!}</p>
+        <p>
+            {{--<span style="max-width: 20%">--}}
+                @if($project->image_url)
+                    <img src="{!! $project->image_url !!}" class="img-fluid" alt="Responsive image" style="max-width: 30%; float: left; margin: 5%"/>
+                @endif
+            {{--</span>--}}
+            {!! $project->detail !!}
+        </p>
         <h3>Publications:</h3>
         <ul>
             @foreach($publications as $publication)
                 @if($publication->project_id == $project->id)
                     <li>
                         <p><a href="{!! $publication->article_url !!}">{!! $publication->title !!}</a></p>
-                        <p>{!! $publication->author !!}, {!! $publication->publication !!}</p>
+                        <p>{!! $publication->author !!},
+                            {!! $publication->publication !!}
+                            @if($publication->source_code)
+                                ,<a href="{!! $publication->source_code !!}" style="color: #008800"><strong>Source Code</strong></a>
+                            @endif
+                        </p>
                     </li>
                 @endif
             @endforeach

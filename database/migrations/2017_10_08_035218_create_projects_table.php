@@ -20,6 +20,7 @@ class CreateprojectsTable extends Migration
             $table->string('website')->nullable();
             $table->string('people');
             $table->string('status');
+            $table->string('image_url')->nullable();
             $table->text('detail');
             $table->timestamps();
             $table->softDeletes();
