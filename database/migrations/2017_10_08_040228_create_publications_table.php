@@ -18,7 +18,7 @@ class CreatepublicationsTable extends Migration
             $table->string('title');
             $table->string('author');
             $table->string('publication');
-            $table->string('source_code');
+            $table->string('source_code')->nullable();
             $table->string('article_url');
             $table->integer('project_id')->unsigned();
             $table->timestamps();
